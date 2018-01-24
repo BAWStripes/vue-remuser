@@ -2,8 +2,8 @@
   <div id="topbar">
     <div class="logo">Remuser</div>
     <div class="actions">
-      <a class="btn" href="#">注册</a>
-      <a class="btn" href="#">登录</a>
+      <el-button type="primary">注册</el-button>
+      <el-button>登录</el-button>
     </div>
   </div>
 </template>
@@ -11,6 +11,8 @@
   #topbar{
     display: flex;
     justify-content: space-between;
+    align-items: center;
     padding: 16px;
+    font-size: 20px;
   }
 </style>
