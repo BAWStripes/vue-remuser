@@ -2,9 +2,7 @@
   <div id="editor">
     <nav>
       <ol>
-        <li v-for = "i in [0,1,2,3,4,5]"
-            v-bind:class="{active:currentTab === i}"
-            v-on:click="currentTab = i">
+        <li v-for="i in [0,1,2,3,4,5]" v-bind:class="{active:currentTab === i}" v-on:click="currentTab = i">
           <svg class="icon">
             <use v-bind:xlink:href="`#icon-${icons[i]}`"></use>
           </svg>
@@ -12,17 +10,52 @@
       </ol>
     </nav>
     <ol class="panels">
-      <li v-for="i in [0,1,2,3,4,5]" v-bind:class="{active:currentTab === i}">tab {{i+1}}</li>
+      <li v-bind:class="{active:currentTab === 0}">
+        <ProfileEditor v-bind:profile="profile"/>
+      </li>
+      <li v-bind:class="{active:currentTab === 1}">
+        <WorkExperienceEditor v-bind:workExperience="workExperience"/>
+      </li>
+      <li v-bind:class="{active:currentTab === 2}">
+        <h2>学习经历</h2>
+      </li>
+      <li v-bind:class="{active:currentTab === 3}">
+        <h2>项目经历</h2>
+      </li>
+      <li v-bind:class="{active:currentTab === 4}">
+        <h2>获奖情况</h2>
+      </li>
+      <li v-bind:class="{active:currentTab === 5}">
+        <h2>联系方式</h2>
+      </li>
     </ol>
   </div>
 </template>
 <script>
+  import ProfileEditor from './ProfileEditor'
+  import WorkExperienceEditor from './WorkExperienceEditor'
+
   export default {
+    components: {
+      ProfileEditor,WorkExperienceEditor
+    },
     data() {
       return {
         currentTab: 0,
-        icons: ['shenfenzheng', 'work', 'book', 'heart', 'goldcup', 'phone']
+        icons: ['shenfenzheng', 'work', 'book', 'heart', 'goldcup', 'phone'],
+        profile: {
+          name: '',
+          city: '',
+          birth: ''
+        },
+        workExperience: [
+          {company: '', content: ''}
+        ]
       }
+    },
+    methods: {},
+    created() {
+
     }
   }
 </script>
@@ -50,14 +83,27 @@
           > .icon {
             fill: #000;
           }
-
         }
       }
     }
-    > .panels > li {
-      display: none;
-      &.active {
-        display: block;
+    > .panels {
+      flex: 1;
+      .container {
+        position: relative;
+        .el-icon-circle-close {
+          position: absolute;
+          top: 15px;
+          right: 10px;
+        }
+      }
+      > li {
+        display: none;
+        padding: 32px;
+        height: 100%;
+        overflow: auto;
+        &.active {
+          display: block;
+        }
       }
     }
   }

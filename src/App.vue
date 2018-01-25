@@ -20,7 +20,7 @@
   }
 </script>
 
-<style lang="scss" rel="stylesheet/scss">
+<style lang="scss" type="text/scss">
   /*html, body, #app{
     height:100%;
   }*/
@@ -34,7 +34,8 @@
   }
 
   .icon {
-    width: 1em; height: 1em;
+    width: 1em;
+    height: 1em;
     vertical-align: -0.15em;
     fill: currentColor;
     overflow: hidden;
@@ -51,22 +52,22 @@
     flex: 1;
     background: #ddd;
 
-    >  .editor {
+    > .editor {
       width: 450px;
       margin: 16px 8px 16px 16px;
       background: #fff;
       box-shadow: 0 0 3px hsla(0, 0, 0, 0.5);
       border-radius: 4px;
-      overflow: hidden;
+      overflow: auto;
     }
 
-    >  .preview {
+    > .preview {
       flex: 1;
       margin: 16px 16px 16px 8px;
       background: #fff;
       box-shadow: 0 0 3px hsla(0, 0, 0, 0.5);
       border-radius: 4px;
-      overflow: hidden;
+      overflow: auto;
     }
   }
 
